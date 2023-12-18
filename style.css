@@ -1,0 +1,14 @@
+#dd, #pp{
+    width: 50vw !important;
+    height: 100vh !important;
+    overflow: hidden;
+    position: relative;
+    background: rgb(0, 0, 43);
+    color: white;
+    display: flex;
+    flex-direction: row;
+}
+div{
+    display: flex;
+    flex-direction: row;
+}

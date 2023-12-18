@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Charts</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <div>
+        <canvas id="dd"></canvas>
+        <canvas id="pp"></canvas>
+    </div>
+
+
+
+
+
+    
+    <script>
+            const dd = document.getElementById('dd');
+            const pp = document.getElementById('pp')
+    
+            var red =0;
+            var blue =0;
+            var yellow =0;
+            var green =0;
+            var purple =0;
+            var orange =0;
+            redNum()
+            blueNum()
+            yellowNum()
+            greenNum()
+            purpleNum()
+            orangeNum()
+
+   const chart = new Chart(dd, {
+  type: 'doughnut',
+  data: {
+    labels: ['Blue', 'Red', 'Yellow', 'Green', 'Purple', 'Orange'],
+    datasets: [{
+      label: '# Data of Colors',
+      data: [red, blue, yellow,green, purple, orange],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
+
+
+const bar = new Chart(pp, {
+  type: 'bar',
+  data: {
+    labels: ['Blue', 'Red', 'Yellow', 'Green', 'Purple', 'Orange'],
+    datasets: [{
+      label: 'Data Example with Live update',
+      data: [red, blue, yellow,green, purple, orange],
+      borderWidth: 3,
+      backgroundColor:['navy', 'blue', 'yellow', 'green', 'purple', 'orange'],
+      borderColor:['cyan', 'blue', 'yellow', 'green', 'purple', 'orange'],
+      borderRadius:['7px']
+    },
+]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
+
+            
+
+    function  redNum (){ red = Math.floor(Math.random()*100);  }
+    function  blueNum(){blue = Math.floor(Math.random()*100);  }
+    function  yellowNum(){yellow = Math.floor(Math.random()*100);  }
+    function greenNum(){green = Math.floor(Math.random()*100);  }
+    function  purpleNum(){ purple = Math.floor(Math.random()*100);  }
+    function  orangeNum(){orange = Math.floor(Math.random()*100);  }
+    setInterval(()=>{redNum(); blueNum(); yellowNum(); greenNum(); purpleNum(); orangeNum(); update()}, 1000)
+
+    function update(){
+
+        chart.data.datasets[0].data = [red, blue, yellow, green, purple, orange];
+        console.log( chart.data.datasets[0].data = [red, blue, yellow, green, purple, orange])
+        chart.update()
+
+        bar.data.datasets[0].data = [red, blue, yellow, green, purple, orange];
+        bar.update()
+    }
+
+    </script>
+</body>
+</html>
